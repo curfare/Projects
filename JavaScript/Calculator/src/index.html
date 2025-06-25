@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор</title>
+    <script type="module" defer src="components/CompleteTask.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1
+        style="
+          text-align: center;
+          color: goldenrod;
+          margin-top: 20vh;
+          margin-bottom: 5vh;
+        "
+      >
+        Калькулятор
+      </h1>
+    </header>
+    <main>
+      <form class="calculator">
+        <input
+          type="text"
+          class="calculator__input"
+          placeholder="Введите число"
+          readonly
+        />
+        <span class="calculator__result"></span>
+        <section class="calculator__section">
+          <ul class="calculator__list3">
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="zero">
+                Привести к нулю
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="delete">
+                Удалить элемент
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="sin">
+                sin
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button
+                class="calculator__button parenthesis thirdButton"
+                value="cos"
+              >
+                cos
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="tan">
+                tan
+              </button>
+            </li>
+
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="ctg">
+                ctg
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="atg">
+                atg
+              </button>
+            </li>
+
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="x!">
+                x!
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="√">
+                √
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="π">
+                π
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="log2">
+                log2
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="lg">
+                lg
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="e">
+                e
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="|x|">
+                |x|
+              </button>
+            </li>
+            <li class="calculator__list--item3">
+              <button class="calculator__button thirdButton" value="x²">
+                x²
+              </button>
+            </li>
+          </ul>
+          <ul class="calculator__list">
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="C">C</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button parenthesis" value="()">
+                ()
+              </button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="%">%</button>
+            </li>
+
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="7">7</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="8">8</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="9">9</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="4">4</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="5">5</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="6">6</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="1">1</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="2">2</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value="3">3</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" style="width: 130px" value="0">
+                0
+              </button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button" value=",">,</button>
+            </li>
+
+            <!-- <li><button>sin</button></li>
+            <li><button>cos</button></li>
+            <li><button>tag</button></li>
+            <li><button>ctg</button></li>
+            <li>
+              <button>x<sup>y</sup></button>
+            </li> -->
+          </ul>
+          <ul class="calculator__list2">
+            <li class="calculator__list--item">
+              <button class="calculator__button list2" value="+">+</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button list2" value="-">-</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button list2" value="*">*</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button list2" value="/">/</button>
+            </li>
+            <li class="calculator__list--item">
+              <button class="calculator__button list2" value="=">=</button>
+            </li>
+          </ul>
+        </section>
+      </form>
+    </main>
+  </body>
+</html>
