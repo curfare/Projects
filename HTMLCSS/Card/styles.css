@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+}
+
+.header__name {
+  position: absolute;
+  left: 5rem;
+  top: 1.5rem;
+  color: white;
+}
+
+.header__logo {
+  position: absolute;
+  top: 0.7rem;
+}
+
+.header__nav {
+  background-color: #242424;
+  height: 75px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.header__nav--link {
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #301010;
+  transition: background-color 0.9s, color 0.9s ease-in-out;
+}
+.header__nav--link:hover {
+  background-color: rgb(229, 228, 227);
+  color: black;
+}
+
+.main {
+  display: flex;
+  width: 100vw;
+  height: 89.9vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/Card/images/backgroundImage.webp');
+  background-size: contain;
+}
+
+.main__card {
+  width: 350px;
+  height: 420px;
+  position: relative;
+  border: 6px solid;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+  padding: 16px;
+
+  transition: box-shadow 1s ease-in-out, transform 1s ease-in-out,
+    border 1s ease-in-out;
+  background-color: bisque;
+  z-index: 100;
+}
+
+.main__card:hover {
+  box-shadow: 0 0 30px black;
+  border-image-slice: 12;
+  border-image-source: linear-gradient(270deg, white, blue, red);
+  animation: borderAnimation 3s linear infinite;
+  transform: scale(1.1);
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-image-source: linear-gradient(270deg, white, blue, red);
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, white, blue, red);
+  }
+  100% {
+    border-image-source: linear-gradient(270deg, white, blue, red);
+  }
+}
+
+.main__card--name {
+  text-align: center;
+}
+
+.main__card--picture {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  object-fit: cover;
+}
+
+.main__card--description {
+  margin-top: 5rem;
+  width: 175px;
+  height: 185px;
+}
+
+.main__card--text {
+  text-align: center;
+  margin-top: -1rem;
+}
+
+.main__card--button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background-color 0.5s linear, color 0.5s linear;
+  cursor: pointer;
+}
+
+.main__card--button:hover {
+  background-color: rgb(221, 168, 69);
+  color: white;
+}
+
+.main__card--button::before {
+  content: '';
+  position: absolute;
+  transform: translateX(-130px) translateY(-80%);
+  width: 300px;
+  height: 400px;
+  background-image: url('/Card/images/photoMan.jpg');
+  pointer-events: none;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-size: contain;
+  transition: transform 3s, opacity 3s;
+}
+
+.main__card--button:hover::before {
+  transform: translateX(250px) translateY(-80%) rotate(45deg);
+  opacity: 1;
+}
