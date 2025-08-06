@@ -1,0 +1,645 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-ExtraBold.woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Bold.woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-SemiBold.woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Regular.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Light.woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Bold.woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter18pt-ExtraBold.woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/PlusJakartaSans-SemiBold.woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+}
+
+/**
+  Плавный скролл
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not([stroke='none'], [stroke^='url'])) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --secondary-text: #c5c5c5;
+  --blue-gradient: #5badff;
+  --secondary-color: #8491a0;
+  --primary-color: #fff;
+  --card-color: #2a2a2a;
+  --background-color: #161513;
+  --font-family: 'Poppins', sans-serif;
+  --second-family: 'Plus Jakarta Sans', sans-serif;
+  --third-family: 'Inter', sans-serif;
+  --border-radius: 50px;
+  --transition-duration: 0.2s;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+a,
+input,
+button,
+textarea {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  align-items: center;
+  column-gap: 20px;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.1);
+  background: #191919;
+  padding-inline: 32px;
+}
+
+.header__list {
+  display: flex;
+  column-gap: 71px;
+  flex-wrap: wrap;
+}
+
+.header__list--anchor {
+  display: inline-flex;
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--primary-color);
+  height: 20px;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .header {
+    min-width: 800px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  .header__menu {
+    order: 1;
+    flex-basis: 100%;
+  }
+  .header__list--anchor {
+    height: 10px;
+  }
+}
+
+@media (max-width: 525px) {
+  .header {
+    flex-wrap: wrap;
+    row-gap: 5px;
+    padding-top: 10px;
+  }
+  .header__menu {
+    order: 1;
+    flex-basis: 100%;
+  }
+  .header__list {
+    column-gap: 25px;
+  }
+  .header__list--anchor {
+    height: 5px;
+  }
+}
+
+.visually-hidden {
+  visibility: hidden;
+}
+
+.main__banner {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 35px;
+}
+
+.main__avatar {
+  padding-top: 100px;
+  width: min(13vw, 251px);
+  height: 223px;
+  margin-bottom: 100px;
+}
+
+.main__avatar--image {
+  background-image: linear-gradient(138deg, #ff8660 0%, #8000ff 98.96%);
+  border-radius: 100%;
+}
+
+.main__head {
+  width: 670px;
+  height: 127px;
+}
+
+.main__head--text {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: min(2.86vw, 55px);
+  line-height: 115%;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.main__head--text2 {
+  background: linear-gradient(90deg, #ff8660 0%, #9a33ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main__banner--description {
+  width: 679px;
+  height: 108px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: min(0.9375vw, 18px);
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--secondary-text);
+}
+
+.main__banner--buttons {
+  width: 417px;
+  height: 64px;
+}
+
+.main__banner--button1 {
+  border: 1px solid var(--primary-color);
+  border-radius: 50px;
+  width: clamp(100px, 10.1vw, 195px);
+  height: 64px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: min(1.09vw, 21px);
+  color: var(--background-color);
+}
+
+.main__banner--button1:hover {
+  opacity: 0.8;
+}
+
+.main__banner--button2:hover {
+  opacity: 0.8;
+}
+
+.main__banner--button2 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: min(1.09vw, 21px);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  width: clamp(110px, 10.625vw, 204px);
+  height: 64px;
+  background: var(--primary-color), var(--primary-color);
+}
+
+.main__experience {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 50px;
+  text-align: center;
+}
+
+.main__experience--head {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: min(1.04vw, 20px);
+  letter-spacing: 0.12em;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+  margin: 50px 0;
+}
+
+.main__experience--projectHead {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: min(1.8vw, 35px);
+  line-height: 102%;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ff8660 0%, #d5491d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main__experience--projects {
+  display: flex;
+  flex-direction: row;
+
+  column-gap: 50px;
+}
+
+.main__experience--project1 {
+  border-radius: 0.93vw;
+  background: var(--card-color);
+  width: clamp(100px, 20.3vw, 390px);
+  height: clamp(100px, 17.6vw, 338px);
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  row-gap: 10px;
+  text-align: start;
+}
+
+.main__experience--project1block {
+  width: 156px;
+  height: 40px;
+  margin-left: 20px;
+}
+
+.main__experience--project1title {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: min(0.5vw, 10px);
+  line-height: 190%;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+}
+
+.main__experience--project1description {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: min(1vw, 19px);
+  line-height: 105%;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.main__experience--project1svg {
+  fill: var(--primary-color);
+  align-self: end;
+  margin: -30px 30px;
+  cursor: pointer;
+}
+
+.main__comments--head {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: min(1.82vw, 35px);
+  line-height: 102%;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #5badff 0%, #1373d1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 75px 0;
+}
+
+.main__comments--blocks {
+  display: flex;
+  flex-direction: column;
+  width: 810px;
+  height: 448px;
+  margin: 0 auto;
+  row-gap: 50px;
+  text-align: left;
+}
+
+.main__comments--block1 {
+  display: flex;
+  flex-wrap: wrap;
+
+  column-gap: 15px;
+  width: 813px;
+  height: 116px;
+}
+
+.main__comments--block2 {
+  display: flex;
+  flex-wrap: wrap;
+
+  column-gap: 15px;
+  width: 804px;
+  height: 116px;
+}
+
+.main__comments--block3 {
+  display: flex;
+  flex-wrap: wrap;
+
+  column-gap: 15px;
+  width: 807px;
+  height: 117px;
+}
+
+.main__comments--title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: min(1.09vw, 21px);
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.main__comments--description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: min(0.72vw, 14px);
+  line-height: 150%;
+  color: var(--secondary-color);
+}
+
+.main__comments--date {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: min(0.72vw, 14px);
+  line-height: 150%;
+  margin-left: auto;
+  color: var(--secondary-color);
+}
+
+.footer {
+  height: 418px;
+  width: 100%;
+  background: #191919;
+  box-sizing: border-box;
+}
+
+.footer__block {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  width: 820px;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding-top: 80px;
+  text-align: left;
+}
+
+.footer__contact {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: min(1.19vw, 23px);
+  letter-spacing: 0.02em;
+  color: var(--primary-color);
+}
+
+.footer__description {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: min(0.72vw, 14px);
+  letter-spacing: 0.02em;
+  color: var(--secondary-text);
+  word-wrap: break-word;
+}
+
+.footer__info {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+}
+
+.footer__subtitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: min(0.72vw, 14px);
+  letter-spacing: 0.02em;
+  color: var(--secondary-text);
+}
